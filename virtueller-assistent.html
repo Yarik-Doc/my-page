@@ -3,10 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Virtueller Assistent – Dokumente, Tabellen & Organisation</title>
+<title>IT & Computerhilfe – Fulda</title>
+
+<meta name="description" content="IT & Computerhilfe in Fulda – Unterstützung für Computer, Internet, WLAN, Digitalisierung und virtueller Assistenz. Vor Ort oder online.">
+<meta name="keywords" content="Computerhilfe Fulda, IT Service, Virtueller Assistent, Dokumentenservice, Google Drive Organisation, Tabellen, Berichte, Support">
+<meta name="author" content="Yarik Hryhoryev">
+<link rel="canonical" href="https://hryhoryev.eu/">
 
 <style>
 body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f5f7fb;color:#333}
+
+/* NAVBAR */
+.navbar {
+  background:#ffffff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.nav-container {
+  max-width:1000px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 20px;
+}
+
+.logo {
+  font-size:20px;
+  font-weight:bold;
+  color:#1f3c88;
+  text-decoration:none;
+}
+
+.menu {
+  list-style:none;
+  display:flex;
+  gap:20px;
+}
+
+.menu a {
+  text-decoration:none;
+  color:#1f3c88;
+  font-weight:600;
+}
+
+.hamburger {
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+#menu-toggle {
+  display:none;
+}
+
+/* Mobile */
+@media (max-width:768px) {
+  .menu {
+    position:absolute;
+    top:60px;
+    right:0;
+    background:white;
+    width:200px;
+    flex-direction:column;
+    padding:20px;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+  }
+
+  #menu-toggle:checked + .hamburger + .menu {
+    display:flex;
+  }
+
+  .hamburger {
+    display:block;
+  }
+}
+
+/* PAGE STYLE */
 header{background:#1f3c88;color:white;padding:60px 20px;text-align:center}
 section{padding:50px 20px;max-width:1000px;margin:auto}
 h2{text-align:center;margin-bottom:30px}
@@ -20,57 +97,47 @@ button{background:#ff7a00;border:none;color:white;padding:12px 20px;border-radiu
 
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">IT & Computerhilfe</a>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+    <ul class="menu">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="virtueller-assistent.html">Virtueller Assistent</a></li>
+      <li><a href="about.html">Über mich</a></li>
+      <li><a href="https://hryhoryev.eu/contact/">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
 <header>
-<h1>Virtueller Assistent</h1>
-<p>Professionelle Unterstützung für Dokumente, Tabellen, Organisation & Kommunikation</p>
-<p>Strukturiert. Zuverlässig. Effizient.</p>
+<h1>IT & Computerhilfe</h1>
+<p>Unterstützung für Privatpersonen, Familien und kleine Betriebe</p>
+<p>Vor Ort oder Online</p>
 </header>
 
 <section>
-<h2>Meine VA‑Leistungen</h2>
+<h2>Meine Leistungen</h2>
 
 <div class="services">
 
 <div class="card">
-<h3>Dokumentenverwaltung</h3>
-<p>Erstellung, Formatierung und Strukturierung von Dokumenten, SOPs, Anleitungen und Vorlagen.</p>
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475" style="width:100%;border-radius:10px;margin-bottom:12px" alt="Computer Hilfe">
+<h3>Computer & Laptop Hilfe</h3>
+<p>Einrichtung, Programme installieren, Fehlerbehebung und technische Unterstützung.</p>
 </div>
 
 <div class="card">
-<h3>Google Drive Organisation</h3>
-<p>Ordnerstruktur, Dateibenennung, Zugriffsrechte und digitale Ordnung für Ihr Unternehmen.</p>
+<img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72" style="width:100%;border-radius:10px;margin-bottom:12px" alt="Internet WLAN">
+<h3>Internet & WLAN</h3>
+<p>Hilfe bei Internet, E-Mail, Drucker, WLAN und digitalen Dokumenten.</p>
 </div>
 
 <div class="card">
-<h3>Tabellen & Auswertungen</h3>
-<p>CRM, Budgettabellen, Tracker, Formeln, Filter und übersichtliche Datenaufbereitung.</p>
-</div>
-
-<div class="card">
-<h3>Berichte & Analysen</h3>
-<p>Wöchentliche oder monatliche Berichte, Diagramme, Zusammenfassungen und PDF‑Auswertungen.</p>
-</div>
-
-<div class="card">
-<h3>Kommunikation & Organisation</h3>
-<p>Professionelle E‑Mails, Terminabsprachen, Status‑Updates und klare Abstimmung.</p>
-</div>
-
-</div>
-</section>
-
-<section class="contact">
-<h2>Kontakt</h2>
-<p>Regelmäßige oder einmalige Unterstützung möglich.</p>
-<p>Preis nach Vereinbarung.</p>
-<a href="https://hryhoryev.eu/contact/" style="display:inline-block;margin-top:10px;text-decoration:none">
-<button>Nachricht senden</button>
-</a>
-</section>
-
-<footer>
-<p>© 2026 Virtueller Assistent – Dokumentenservice</p>
-</footer>
-
-</body>
-</html>
+<img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4" style="width:100%;border-radius:10px;margin-bottom:12px" alt="Digitalisierung Dokumente">
+<h3>Digitalisierung</h3>
+<p>Scannen
