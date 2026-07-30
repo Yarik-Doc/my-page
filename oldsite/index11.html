@@ -1,0 +1,147 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="UTF-8">
+<title>YAROSLAV</title>
+
+<meta name="description" content="">
+
+<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> <!-- This fixes some bugs in older versions of Internet Explorer -->
+
+<!-- CSS STYLES -->
+<link href="_css/main.css" rel="stylesheet" type="text/css" media="screen">
+<link href="_css/flexslider.css" rel="stylesheet" type="text/css" media="screen">
+<link href="_css/less.css" rel="stylesheet" type="text/css" media="screen">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+
+<!-- FONTS from GOOGLE FONTS -->
+<link href='http://fonts.googleapis.com/css?family=Stalemate|Merriweather|Marcellus' rel='stylesheet' type='text/css'>
+
+<!-- FACEBOOK SCRIPT - remove if not linking facebook page-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script><!-- end FACEBOOK SCRIPT -->
+
+</head>
+<body lang="en">
+
+<div class="wrapper1">
+<header>
+
+<div id="logo">
+<img src="_img/logo1c.png" width="444" height="50" alt="YAROSLAV"></div>
+<!-- end logo -->
+<div class="contact-info"> 
+
+    <p><a href="https://twitter.com" title="Follow us on Twitter"><img src="_img/_icons/twitter.png" width="22" height="22" alt="ALT TEXT HERE"></a>
+        <a href="https://www.facebook.com/" title="Like our Facebook Page"><img src="_img/_icons/facebook.png" width="22" height="22" alt="ALT TEXT HERE"></a>
+        <a href="https://plus.google.com/106955806245449786793" title="Follow us on Google+"><img src="_img/_icons/googleplus.png" width="22" height="22" alt="ALT TEXT HERE"></a>
+        <a href="https://pt.linkedin.com/pub/yaroslav-hryhoryev/b2/920/747" title="Follow us on Linkedin"><img src="_img/_icons/linkedin.png" width="22" height="22" alt="ALT TEXT HERE"></a><br/>
+    </p>
+    </div>
+<!-- end contact-info -->
+
+
+
+
+<!-- end main -->
+<div class="wrapper2">
+
+<footer><!-- end footer-column1 --><!-- end footer-column2 -->
+  <p align="center">Copyrights © YAROSLAV </p>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+  <!-- end left --><nav>
+<ul class="menu">
+<li><a href="index.html" class="current">HOME</a></li>
+<li><a href="portfolio.html">MY WORK</a></li>
+<li><a href="blog.html">BLOG</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+<li><a href="index.html">DOWNLOAD</a></li>
+<div class="clearfloat">
+</div>
+</ul>
+</nav>
+  <!-- end right -->
+</footer>
+</div>
+<!-- end wrapper2 -->
+
+</body>
+<!-- SCRIPTS -->
+<script src="_js/jquery 1.8.3.js"></script>
+<script src="_js/css3-mediaqueries.js"></script>
+<script src="_js/jquery.tweet.js" ></script> 
+<script src="_js/jquery.flexslider-min.js"></script>
+<script src="_js/modernizr.js"></script>
+<!-- GOOGLE+1 -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'en-GB'};
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<script>
+jQuery(document).ready(function($) {
+	
+	// Prepend combo nav holder
+    $('nav').append('<div class="mobile-nav"></div>');
+    
+    // Create the dropdown base
+	$("<select id='comboNav' />").appendTo(".mobile-nav");
+	
+	// Create default option "Go to..."
+	$("<option />", {
+		"selected": "selected",
+		"value"   : "",
+		"text"    : "MENU"
+	}).appendTo(".mobile-nav select");
+	
+	// Populate dropdown with menu items
+	$(".menu a").each(function() {
+		var el = $(this);		
+		var label = $(this).parent().parent().attr('id');
+		var sub = (label == 'nav') ? '' : '- ';
+		
+		$("<option />", {
+		 "value"   : el.attr("href"),
+		 "text"    :  sub + el.text()
+		}).appendTo(".mobile-nav select");
+	});
+	
+	/* Combo navigation action ----------------------------------------------------*/  
+	
+	$("#comboNav").change(function() {
+	  location = this.options[this.selectedIndex].value;
+	});
+	
+	// FLEXSLIDER //
+	$('.flexslider').flexslider({
+    	animation: "fade",
+    	controlNav: false,
+    	keyboardNav: true,
+		directionNav: false
+    });
+	
+	// TWITTER WIDGET //
+	$("#tweets").tweet({
+        count: 3,
+        username: "yarodesign"//REPLACE WITH YOUR TWITTER ID //
+    });
+    
+//close			
+});
+</script>
+</html>
+

@@ -1,0 +1,158 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="UTF-8">
+<title>Bluefolio Template Help Page</title>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- CSS STYLES -->
+<link href="../_css/main.css" rel="stylesheet" type="text/css" media="screen">
+<link href="help.css" rel="stylesheet" type="text/css" media="screen">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<link href='http://fonts.googleapis.com/css?family=Stalemate|Merriweather|Marcellus' rel='stylesheet' type='text/css'>
+</head>
+<body lang="en">
+<div class="wrapper1">
+<header>
+<div id="logo">
+  <h1>Company Logo <span>PORTFOLIO WEBSITE TEMPLATE</span></h1>
+</div><!-- end logo -->
+<div class="contact-info"> 
+    <a href="#" title="Follow us on Twitter"><img src="../_img/_icons/twitter.png" width="32" height="32" alt="ALT TEXT HERE"></a>
+    <a href="#" title="Like our Facebook Page"><img src="../_img/_icons/facebook.png" width="32" height="32" alt="ALT TEXT HERE"></a>
+    <a href="#" title="Follow us on Google+"><img src="../_img/_icons/googleplus.png" width="32" height="32" alt="ALT TEXT HERE"></a>
+   <a href="http://www.linkedin.com/pub/eskside-design/51/208/b7b" title="Follow us on Linkedin"><img src="../_img/_icons/linkedin.png" width="32" height="32" alt="ALT TEXT HERE"></a><br/>
+    Call - 0123 456 7890</div><!-- end contact-info -->
+<div class="clearfloat"></div>
+</header>
+</div><!-- end wrapper1 -->
+<nav>
+<ul class="menu">
+<li><a href="../index.html" class="current">HOME</a></li>
+<li><a href="../portfolio.html">MY WORK</a></li>
+<li><a href="../blog.html">BIO</a></li>
+<li><a href="../contact.html">CONTACT</a></li>
+<div class="clearfloat"></div>
+</ul>
+</nav>
+<div class="main">
+<div class="help-info">
+<h2 class="page-heading"><span>Bluefolio Template Documentation</span></h2>
+   
+<h4>HTML STRUCTURE</h4>
+
+<p>The pages are built in 3 sections - .wrapper1, .main, .wrapper2</p><br/>
+<p>.wrapper1 holds the header which consists of #logo and .contact-info. </p>
+<p>.main holds the main body of text and images.</p>
+<p>.wrapper2 holds the footer and all relevant info.</p><br/>
+
+<h4>Files</h4>
+
+<p>All neccessary HTML, CSS, Javascript and images are all contained within the downloaded .zip file.</p>
+<p>The images in the website demo <em><strong>will not be included</strong></em> and blank image placeholders will be used instead. Just replace them with your own images.</p><br/>
+
+<h4>CONTACT FORM</h4>
+
+<p>To get the form to send to your email address you have to add your email address to the "freecontactformsettings.php" file. I have put comments on that file so when you open it in your text editor you will easily be able to configure it. Will only take a minute to update.</p>
+<p>If you change the Anti Spam Question on the form you will have to update the answer, also in the "freecontactformsettings.php" (Example below)</p>
+
+<div class="script-block">
+  <p>&lt;?php</p>
+  <p>&nbsp;</p>
+  <p>$email_to = &quot;you@yourdomain.com&quot;; // your email address goes in place of you@yourdomain.com. MAKE SURE THAT YOU LEAVE THE QUOTES (&quot;&quot;) IN PLACE</p>
+  <p><br>
+  </p>
+  <p>$email_subject = &quot;Contact Form Message&quot;; // email subject line will show up on the received email.</p>
+  <p><br>
+  </p>
+  <p>$thankyou = &quot;thankyou.html&quot;; // thank you page shows once the form has been sent to let users know that the form is sent then redirects the user back to your homepage after 8/9 seconds</p>
+  <p>&nbsp;</p>
+  <p>// if you update the Anti Spam question on the form -</p>
+  <p>// you need to update the questions answer below</p>
+  <p>$antispam_answer = &quot;25&quot;;</p>
+  <p>&nbsp;</p>
+  <p>?&gt;</p>
+
+</div><!-- end script-block -->
+
+<h4>GOOGLE MAPS</h4>
+
+<p>To show your location on the Google Map you have to change the lat and long co-ordinates in the "contact.html" file. (LINE 71 - Long and Lat in <strong>RED</strong> text)</P>
+<P>To get your location Lat and Long go to <a href="http://itouchmap.com/latlong.html">http://itouchmap.com/latlong.html</a> and enter your address.</p><br/>
+
+<h4>CSS Files</h4>
+<p>3 CSS files are included. ( main.css - flexslider.css &amp; less.css)<br>
+  I recommend leaving the "flexslider.css" unless you want to add direction buttons to the slider. I have included the main styling elements for the slider in the "main.css" file with the exception of the direction buttons.</p>
+<p>Everything else is styled within the &quot;main.css.&quot; </p>
+<p>The less.css controls the page layout if someone is using a Tablet or Mobile to view your website</p>
+<br/>
+<p><strong><em>TIP : &quot;before editing any files make sure you have a backup copy of the originals. Although you can always download them again if you mess anything up.&quot; ^__^</em></strong></p><br/>
+
+<h4>IMAGES</h4>
+<p>Image widths are controlled with CSS. To ensure your images look sharp it is IMPORTANT to make your images to the highest required dimensions.<br/> 
+"EXAMPLE" - The slider on the home page is 980px wide. Currently the image is half the size of the slider so you need to make sure that your slider images are a minimum width of 490px. If you want your images to take up the full width of the slider then they will have to be a minimum width of 980px and you will have to also alter the image width in the &quot;main.css&quot; file. It is currently set to 50% so you would change that to 100%. No need to set image height as this is taken care of elsewhere.</p>
+<p>Best to make all your images the same dimensions as this stops the slider changing size and moving your page layout around.</p>
+<p>&nbsp;</p>
+<p>The images on the portfolio page will be at their largest size on a mobile layout in landscape. This is currently set at 460px in the &quot;less.css&quot; file so make sure images that you are using for those are at least 460px wide.</p>
+<p>&nbsp;</p>
+<p>The images in the blog post are simple resized slider images all taken care of for you by setting the image size in .column-large div to 100%.</p>
+<br/>
+
+<h4>SOCIAL ICONS</h4>
+<p>To link these to your Social Media Accounts simply replace our relevant URL's with URL's to your own Social Accounts</p><br/>
+
+<h4>SOCIAL SHARING BUTTONS</h4>
+
+<p>Google Plus 1 button will share the pages URL. No need to edit this.</p>
+<p>Facebook Like &amp; Twitter Share / Follow buttons can be obtained from their websites. Simply replace our buttons with your own. The facebook button has a linked piece of Javascript up in the &lt;head&gt; of the document and the Twitter buttons come with their own javascript which you will see is beside the links in the HTML of the page.</p>
+<p>These are also styled in the &quot;main.css&quot; although the styling is only to align the buttons. You can't change how they look.</p>
+<br/>
+
+<h4>JAVASCRIPT</h4>
+
+<p>All the relevant Javascript files are linked at the bottom of each page. This lets them load last on your page enabling visitors to see your content quicker. I recommend leaving the Javascript files as they are. </p>
+<p>The final Javascript entry on each page is where you edit the Twitter Feed and the Flexslider. (Flexslider is only on home page but Tweet Feed is on every page so make sure you replace our Twitter ID with your Twitter ID on all pages. Again I have left comments on the pages explainig exactly how to edit.  (Example below) You can also style the tweets in the &quot;main.css&quot;</p>
+
+<div class="script-block">&lt;script&gt;<br>
+  jQuery(document).ready(function($) {<br>
+  <br>
+$('.flexslider').flexslider({<br>
+animation: &quot;fade&quot;,<br>
+controlNav: false,<br>
+keyboardNav: true,<br>
+directionNav: false<br>
+});<br>
+<br>
+// TWITTER WIDGET //<br>
+$(&quot;#tweets&quot;).tweet({<br>
+count: 3, //HOW MANY TWEETS YOU WANT ON SHOW//<br>
+username: &quot;esksidedesign&quot;//REPLACE WITH YOUR TWITTER ID AND LEAVE THE ( &quot;&quot; )IN PLACE//<br>
+});<br>
+<br>
+//close <br>
+});<br>
+&lt;/script&gt;</div><!-- end script-block -->
+
+<h4>CREDITS</h4>
+<p>The Template and Demo were created using the following resources</p><br/>
+<p>Images</p>
+<p> <a href="http://www.freestockphotos.biz/">freestockphotos.biz</a></p><br/>
+<p>Contact Form</p>
+<p><a href="http://www.freecontactform.com/">Free Contact Form</a></p><br/>
+<p>Javascript</p>
+<p> <a href="http://modernizr.com/">Modernizr.com</a></p>
+<p><a href="http://code.google.com/p/css3-mediaqueries-js/">CSS3 MediaQueries</a></p>
+<p><a href="http://www.woothemes.com/flexslider/">Flexslider</a></p>
+<p>&nbsp;	</p>
+
+</div>
+<!-- end help-info -->
+</div><!-- end main -->
+</body>
+</html>
