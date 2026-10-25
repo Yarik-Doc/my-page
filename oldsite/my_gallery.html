@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея робіт | YAROSLAV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            margin: 30px 0 10px;
+            font-weight: 300;
+            color: #2c3e50;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .gallery a {
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+            aspect-ratio: 1 / 1;
+        }
+        .gallery a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .gallery a:hover img { transform: scale(1.05); }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2rem;
+            color: #95a5a6;
+        }
+        .error-msg {
+            text-align: center;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            color: #e74c3c;
+            border: 1px solid #fadbd8;
+            margin-bottom: 20px;
+        }
+        .folder-note {
+            text-align: center;
+            color: #95a5a6;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Мої роботи</h1>
+    <p class="subtitle">Фотографії з папок assets, _slides та _thumbs</p>
+    <p id="status" class="folder-note">Завантаження зображень...</p>
+
+    <div id="gallery" class="gallery"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script>
+    (function() {
+        const OWNER = 'Yarik-Doc';
+        const REPO = 'my-page';
+
+        // Список папок для завантаження
+        const FOLDERS = [
+            'oldsite/assets',
+            'oldsite/_img/_slides',
+            'oldsite/_img/_thumbs'
+        ];
+
+        const galleryContainer = document.getElementById('gallery');
+        const statusEl = document.getElementById('status');
+
+        function isImage(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            return ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'].includes(ext);
+        }
+
+        // Отримати список файлів з однієї папки
+        function fetchFolder(folder) {
+            const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${folder}`;
+            return fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`${folder}: ${response.status} ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(files => {
+                    // Повертаємо масив об'єктів зображень з цієї папки
+                    return files
+                        .filter(file => file.type === 'file' && isImage(file.name))
+                        .map(file => ({
+                            name: file.name,
+                            url: file.download_url,
+                            folder: folder
+                        }));
+                })
+                .catch(error => {
+                    console.warn('Не вдалося завантажити папку:', error.message);
+                    return []; // Не ламаємо весь процес через одну папку
+                });
+        }
+
+        // Завантажити всі папки паралельно
+        Promise.all(FOLDERS.map(fetchFolder))
+            .then(results => {
+                // Об'єднуємо результати з усіх папок
+                const allImages = results.flat();
+
+                if (allImages.length === 0) {
+                    statusEl.textContent = '';
+                    galleryContainer.innerHTML = '<div class="error-msg">Не знайдено жодного зображення в жодній із папок.</div>';
+                    return;
+                }
+
+                statusEl.textContent = `Знайдено ${allImages.length} зображень.`;
+                galleryContainer.innerHTML = '';
+
+                allImages.forEach(image => {
+                    const link = document.createElement('a');
+                    link.href = image.url;
+                    // Підпис: ім'я файлу + назва папки
+                    link.setAttribute('data-caption', `${image.name} (${image.folder.split('/').pop()})`);
+
+                    const img = document.createElement('img');
+                    img.src = image.url;
+                    img.alt = image.name;
+                    img.loading = 'lazy';
+
+                    link.appendChild(img);
+                    galleryContainer.appendChild(link);
+                });
+
+                baguetteBox.run('.gallery', {
+                    captions: true,
+                    buttons: 'auto',
+                    animation: 'fadeIn'
+                });
+            })
+            .catch(error => {
+                console.error('Помилка завантаження галереї:', error);
+                statusEl.textContent = '';
+                galleryContainer.innerHTML = `<div class="error-msg">
+                    Не вдалося завантажити зображення.<br>
+                    <small>(${error.message})</small>
+                </div>`;
+            });
+    })();
+</script>
+</body>
+</html>
